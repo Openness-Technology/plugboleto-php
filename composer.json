@@ -1,0 +1,34 @@
+{
+    "name": "brunohccz/tecnospeed-boleto-sdk",
+    "description": "",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Bruno Cerciliar",
+            "email": "brunocerciliar@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "require": {
+        "guzzlehttp/guzzle": "~6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Tecnospeed\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8",
+        "fzaninotto/faker": "^1.9@dev",
+        "jansenfelipe/faker-br": "1.0.x-dev"
+    }
+}

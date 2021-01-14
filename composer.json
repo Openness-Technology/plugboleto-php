@@ -1,12 +1,20 @@
 {
-    "name": "brunohccz/tecnospeed-boleto-sdk",
-    "description": "",
+    "name": "openness-technology/plugboleto-php",
+    "description": "Pacote para utilização do PlugBoletos da Tecnospeed em PHP",
     "type": "library",
     "license": "MIT",
     "authors": [
         {
             "name": "Bruno Cerciliar",
             "email": "brunocerciliar@gmail.com"
+        },
+        {
+            "name": "Guilherme Henrique",
+            "email": "guiihdourado@gmail.com"
+        },
+        {
+            "name": "Fábio Simões",
+            "email": "fabio.simoes@opennesstechnology.com"
         }
     ],
     "minimum-stability": "dev",

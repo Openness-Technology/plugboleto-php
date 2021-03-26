@@ -4,7 +4,6 @@ namespace Tecnospeed;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
-use GuzzleHttp\Message\RequestInterface;
 use Tecnospeed\Core\Boleto\Cedente;
 use Tecnospeed\Core\Boleto\Conta;
 use Tecnospeed\Core\Boleto\Convenio;
@@ -61,13 +60,11 @@ class Boleto
 
     $this->client = new Client([
       'base_url' => $this->baseUrl,
-      'defaults' => [
-        'headers' => [
-          'content-type' => 'application/json',
-          'cnpj-cedente' => $config['cnpj-cedente'] ?? '',
-          'cnpj-sh'      => $config['cnpj-sh'],
-          'token-sh'     => $config['hash-sh']
-        ]
+      'headers' => [
+        'content-type' => 'application/json',
+        'cnpj-cedente' => $config['cnpj-cedente'] ?? '',
+        'cnpj-sh'      => $config['cnpj-sh'],
+        'token-sh'     => $config['hash-sh']
       ]
     ]);
 
@@ -90,27 +87,13 @@ class Boleto
   public function request($uri, $data = [], $method = 'post', array $headers = [])
   {
     try {
-      $request = $this->{'create'.ucfirst($method).'Request'}($uri, $data);
-      $request = $this->addHeaders($request, $headers);
-
-      $response = $this->client->send($request);
+      $response = $this->{'create'.ucfirst($method).'Request'}($uri, $data);
 
       return json_decode($response->getBody());
     } catch (ClientException $e) {
       $response = $e->getResponse();
       return json_decode($response->getBody()->getContents());
     }
-  }
-
-  protected function addHeaders(RequestInterface $request,array $headers): RequestInterface
-  {
-    if(empty($headers)) return $request;
-
-    foreach($headers as $name => $value) {
-      $request->addHeader($name, $value);
-    }
-
-    return $request;
   }
 
   public function cedente(): Cedente

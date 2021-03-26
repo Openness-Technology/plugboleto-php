@@ -59,7 +59,7 @@ class Boleto
     $this->setEnvironment($config);
 
     $this->client = new Client([
-      'base_url' => $this->baseUrl,
+      'base_uri' => $this->baseUrl,
       'headers' => [
         'content-type' => 'application/json',
         'cnpj-cedente' => $config['cnpj-cedente'] ?? '',

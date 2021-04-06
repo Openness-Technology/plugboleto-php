@@ -8,7 +8,7 @@ use Tecnospeed\Cedente;
 
 class CedenteTest extends TestCase
 {
-   
+
   protected function makeCedentePayload()
   {
     return [
@@ -36,27 +36,6 @@ class CedenteTest extends TestCase
     $this->assertEquals("sucesso", $response->_status);
     $this->assertEquals($payload['CedenteNomeFantasia'], $response->_dados->nomefantasia);
     $this->assertEquals($payload['CedenteCPFCNPJ'], $response->_dados->cpf_cnpj);
-  }
-
-  public function test_can_update_a_cedente()
-  {
-    $payload = $this->makeCedentePayload();
-    $boleto = new Boleto($this->config);
-
-    $cedenteCreated = $boleto->cedente()->create($payload);
-
-    $payloadUpdated = $payload + [
-      'CedenteNomeFantasia' => $this->faker->name
-    ];
-
-    $response = $boleto->cedente()->update(
-      $cedenteCreated->_dados->id,
-      $cedenteCreated->_dados->cpf_cnpj,
-      $payloadUpdated
-    );  
-
-    $this->assertEquals('sucesso', $response->_status);
-    $this->assertEquals($payloadUpdated['CedenteNomeFantasia'], $response->_dados->nomefantasia);
   }
 
 }

@@ -91,7 +91,7 @@ class Boleto
       $response = $this->{'create'.ucfirst($method).'Request'}($uri, $data);
 
       if(!($response instanceof ResponseInterface)) {
-        throw new \Exception(json_encode($response->_dados));
+        return $response->_dados;
       }
 
       return json_decode($response->getBody());
